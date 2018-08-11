@@ -2,62 +2,62 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable {
 	
-	private String T;
-	private String A;
-	private String C;
-	private int ID;
+	private String title;
+	private String author;
+	private String callNumber;
+	private int bookID;
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE state;
 	
 	
-	public book(String author, String title, String callNo, int id) {
-		this.A = author;
-		this.T = title;
-		this.C = callNo;
-		this.ID = id;
+	public Book(String author, String title, String callNo, int id) {
+		this.author = author;
+		this.title = title;
+		this.callNumber = callNo;
+		this.bookID = id;
 		this.state = STATE.AVAILABLE;
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(T).append("\n")
-		  .append("  Author: ").append(A).append("\n")
-		  .append("  CallNo: ").append(C).append("\n")
+		sb.append("Book: ").append(bookID).append("\n")
+		  .append("  Title:  ").append(title).append("\n")
+		  .append("  Author: ").append(author).append("\n")
+		  .append("  CallNo: ").append(callNumber).append("\n")
 		  .append("  State:  ").append(state);
 		
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public Integer bookID() {
+		return bookID;
 	}
 
-	public String Title() {
-		return T;
+	public String title() {
+		return title;
 	}
 
 
 	
-	public boolean Available() {
+	public boolean available() {
 		return state == STATE.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
+	public boolean onLoan() {
 		return state == STATE.ON_LOAN;
 	}
 
 	
-	public boolean Damaged() {
+	public boolean damaged() {
 		return state == STATE.DAMAGED;
 	}
 
 	
-	public void Borrow() {
+	public void borrow() {
 		if (state.equals(STATE.AVAILABLE)) {
 			state = STATE.ON_LOAN;
 		}
@@ -68,7 +68,7 @@ public class book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void returnState(boolean DAMAGED) {
 		if (state.equals(STATE.ON_LOAN)) {
 			if (DAMAGED) {
 				state = STATE.DAMAGED;
@@ -83,7 +83,7 @@ public class book implements Serializable {
 	}
 
 	
-	public void Repair() {
+	public void repair() {
 		if (state.equals(STATE.DAMAGED)) {
 			state = STATE.AVAILABLE;
 		}
