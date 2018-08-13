@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Calendar {
+public class Calendar {//tested raniths
 	
 	private static Calendar self;
 	private static java.util.Calendar cal;
