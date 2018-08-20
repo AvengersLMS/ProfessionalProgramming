@@ -29,8 +29,8 @@ public class Member implements Serializable {
 
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(memberID).append("\n")
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Member:  ").append(memberID).append("\n")
 		  .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")
 		  .append("  Email: ").append(email).append("\n")
 		  .append("  Phone: ").append(phoneNumber)
@@ -40,9 +40,9 @@ public class Member implements Serializable {
                 //modifed variables are put in parameters 
 		
 		for (Loan loan : loans.values()) {
-			sb.append(loan).append("\n");
+			stringBuilder.append(loan).append("\n");
 		}		  
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	
