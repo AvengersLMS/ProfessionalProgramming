@@ -3,29 +3,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class loan implements Serializable {
+public class Loan implements Serializable { //class name is modified by starting from uppercase letter
 	
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
+	private int bookID;
+	private Book bookName;
+	private Member memberID;
+	private Date date;      
+	private LOAN_STATE state; // changed all variables using proper meaningful names 
 
 	
-	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+	public Loan(int loanId, Book book, Member member, Date dueDate) {
+		this.bookID = loanId;
+		this.bookName = book;
+		this.memberID = member;
+		this.date = dueDate;
+		this.state = LOAN_STATE.CURRENT; //updated those modified variable details here as well
 	}
 
 	
-	public void checkOverDue() {
+	public void checkOverDue() { 
 		if (state == LOAN_STATE.CURRENT &&
-			Calendar.getInstance().Date().after(D)) {
+			Calendar.getInstance().Date().after(date)) { //modified variable is used in the parameter
 			this.state = LOAN_STATE.OVER_DUE;			
 		}
 	}
@@ -37,41 +37,41 @@ public class loan implements Serializable {
 
 	
 	public Integer getId() {
-		return ID;
+		return bookID; // return value is changes according to changes of varible names
 	}
 
 
 	public Date getDueDate() {
-		return D;
+		return date; // return value is changes according to changes of varible names
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFromat = new SimpleDateFormat("dd/MM/yyyy"); // object name is modifed from abbreviation 
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.getId()).append(" : ")
-		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.Title()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		sb.append("Loan:  ").append(bookID).append("\n")
+		  .append("  Borrower ").append(member().getId()).append(" : ")
+		  .append(member().getLastName()).append(", ").append(member().getFirstName()).append("\n")
+		  .append("  Book ").append(book().bookID()).append(" : " )
+		  .append(book().title()).append("\n")
+		  .append("  DueDate: ").append(simpleDateFromat.format(date)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
 
 
-	public member Member() {
-		return M;
+	public Member member() {
+		return memberID; // return value is changes according to changes of varible names
 	}
 
 
-	public book Book() {
-		return B;
+	public Book book() {
+		return bookName; // return value is changes according to changes of varible names
 	}
 
 
-	public void Loan() {
+	public void loan() {
 		state = LOAN_STATE.DISCHARGED;		
 	}
 
