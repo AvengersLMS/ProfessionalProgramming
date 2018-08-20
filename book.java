@@ -2,62 +2,64 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable { //changed book name as Book 
 	
-	private String T;
-	private String A;
-	private String C;
-	private int ID;
+	private String title; 
+	private String author;
+	private String callNumber;
+	private int bookID;  //changed variable names by using proper names
+
+
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE state;
 	
 	
-	public book(String author, String title, String callNo, int id) {
-		this.A = author;
-		this.T = title;
-		this.C = callNo;
-		this.ID = id;
-		this.state = STATE.AVAILABLE;
+	public Book(String author, String title, String callNo, int id) { 
+		this.author = author;
+		this.title = title;
+		this.callNumber = callNo;
+		this.bookID = id;
+		this.state = STATE.AVAILABLE; //changed those variables here as well
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(T).append("\n")
-		  .append("  Author: ").append(A).append("\n")
-		  .append("  CallNo: ").append(C).append("\n")
-		  .append("  State:  ").append(state);
+		sb.append("Book: ").append(bookID).append("\n")
+		  .append("  Title:  ").append(title).append("\n")
+		  .append("  Author: ").append(author).append("\n")
+		  .append("  CallNo: ").append(callNumber).append("\n")
+		  .append("  State:  ").append(state); //changed variables in parameters
 		
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public Integer bookID() { //changed method name as meaninfull one and start from lower case letter.
+		return bookID;
 	}
 
-	public String Title() {
-		return T;
+	public String title() { //changed method name as meaninfull one and start from lower case letter.
+		return title;
 	}
 
 
 	
-	public boolean Available() {
+	public boolean available() { //changed method name as meaninfull one and start from lower case letter.
 		return state == STATE.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
+	public boolean onLoan() { //changed method name as meaninfull one and start from lower case letter.
 		return state == STATE.ON_LOAN;
 	}
 
 	
-	public boolean Damaged() {
+	public boolean damaged() { //changed method name as meaninfull one and start from lower case letter.
 		return state == STATE.DAMAGED;
 	}
 
 	
-	public void Borrow() {
+	public void borrow() { //changed method name as meaninfull one and start from lower case letter.
 		if (state.equals(STATE.AVAILABLE)) {
 			state = STATE.ON_LOAN;
 		}
@@ -68,7 +70,7 @@ public class book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void returnState(boolean DAMAGED) { //changed method name as meaninfull one and start from lower case letter.
 		if (state.equals(STATE.ON_LOAN)) {
 			if (DAMAGED) {
 				state = STATE.DAMAGED;
@@ -83,7 +85,7 @@ public class book implements Serializable {
 	}
 
 	
-	public void Repair() {
+	public void repair() { //modified method name start from lower case letter.
 		if (state.equals(STATE.DAMAGED)) {
 			state = STATE.AVAILABLE;
 		}
