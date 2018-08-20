@@ -49,15 +49,15 @@ public class Loan implements Serializable { //class name is modified by starting
 	public String toString() {
 		SimpleDateFormat simpleDateFromat = new SimpleDateFormat("dd/MM/yyyy"); // object name is modifed from abbreviation 
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(bookID).append("\n")
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Loan:  ").append(bookID).append("\n")
 		  .append("  Borrower ").append(member().getId()).append(" : ")
 		  .append(member().getLastName()).append(", ").append(member().getFirstName()).append("\n")
 		  .append("  Book ").append(book().bookID()).append(" : " )
 		  .append(book().title()).append("\n")
 		  .append("  DueDate: ").append(simpleDateFromat.format(date)).append("\n")
 		  .append("  State: ").append(state);		
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 
